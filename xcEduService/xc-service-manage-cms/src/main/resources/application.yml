@@ -1,0 +1,21 @@
+server:
+  port: 31001
+  servlet:
+    context-path: /cms
+
+spring:
+  application:
+    name: xc-service-manage-cms
+
+  data:
+    mongodb:
+      uri:  mongodb://localhost:27017
+      database: xc_cms
+
+  # rabbitmq配置
+  rabbitmq:
+    host: 127.0.0.1
+    port: 5672
+    username: guest
+    password: guest
+    virtualHost: /
