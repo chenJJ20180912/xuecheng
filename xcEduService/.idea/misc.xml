@@ -15,6 +15,7 @@
         <option value="$PROJECT_DIR$/testfreemaker/pom.xml" />
         <option value="$PROJECT_DIR$/test-rabbitmq-consumer/pom.xml" />
         <option value="$PROJECT_DIR$/test-rabbitmq-producer/pom.xml" />
+        <option value="$PROJECT_DIR$/xc-service-manage-course/pom.xml" />
       </list>
     </option>
     <option name="ignoredFiles">
