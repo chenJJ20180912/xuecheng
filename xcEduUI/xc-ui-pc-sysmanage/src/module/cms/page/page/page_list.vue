@@ -27,6 +27,7 @@
     <el-container>
       <el-main>
         <el-table
+          ref="listForm"
           :data="list"
           stripe highlight-current-row
           @current-change="changeSelectRow"
@@ -110,6 +111,16 @@
           page: 1,
           size: 10
         }
+      }
+    },
+    watch: {
+      // 通过监听实现table加载后自动选中第一行
+      list: function() {
+        this.$nextTick(function() {
+          if(this.list && this.list.length){
+            this.$refs.listForm.setCurrentRow(this.list[0])
+          }
+        })
       }
     },
     methods: {

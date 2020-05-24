@@ -1,6 +1,7 @@
 package com.xuecheng.manage_cms.service;
 
 import com.xuecheng.framework.domain.cms.CmsConfig;
+import com.xuecheng.framework.domain.cms.CmsConfigModel;
 import com.xuecheng.framework.domain.cms.request.QueryConfigRequest;
 import com.xuecheng.framework.domain.cms.response.CmsCode;
 import com.xuecheng.framework.domain.cms.response.CmsConfigResult;
@@ -11,12 +12,15 @@ import com.xuecheng.framework.model.response.QueryResult;
 import com.xuecheng.framework.model.response.ResponseResult;
 import com.xuecheng.manage_cms.dao.CmsConfigRepository;
 import org.apache.commons.lang3.StringUtils;
+import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.*;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CmsConfigService {
@@ -36,15 +40,10 @@ public class CmsConfigService {
             queryConfigRequest = new QueryConfigRequest();
         }
         ExampleMatcher exampleMatcher = ExampleMatcher.matching()
-                .withMatcher("id", ExampleMatcher.GenericPropertyMatchers.contains())
                 .withMatcher("name", ExampleMatcher.GenericPropertyMatchers.contains());
         //条件值对象
         CmsConfig cmsConfig = new CmsConfig();
-        //设置条件值（站点id）
-        if (StringUtils.isNotEmpty(queryConfigRequest.getId())) {
-            cmsConfig.setId(queryConfigRequest.getId());
-        }
-        //设置模板id作为查询条件
+        //根据名称模糊匹配
         if (StringUtils.isNotEmpty(queryConfigRequest.getName())) {
             cmsConfig.setName(queryConfigRequest.getName());
         }
@@ -90,7 +89,7 @@ public class CmsConfigService {
         //根据id从数据库查询页面信息
         CmsConfig one = this.getById(id).getCmsConfig();
         one.setName(cmsConfig.getName());
-        one.setModel(cmsConfig.getModel());
+        // one.setModel(cmsConfig.getModel());
         //提交修改
         cmsConfigRepository.save(one);
         return new CmsConfigResult(CommonCode.SUCCESS, one);
@@ -106,5 +105,51 @@ public class CmsConfigService {
             return new ResponseResult(CommonCode.SUCCESS);
         }
         return new ResponseResult(CommonCode.FAIL);
+    }
+
+    public CmsConfigResult addCmsConfigModel(String id, CmsConfigModel configModel) {
+        String key = configModel.getKey();
+        String name = configModel.getName();
+        if (StringUtils.isEmpty(key) || StringUtils.isEmpty(name)) {
+            ExceptionCast.cast(CommonCode.INVALID_PARAM);
+        }
+        CmsConfig config = getById(id).getCmsConfig();
+        List<CmsConfigModel> model = config.getModel();
+        if (model == null) {
+            model = new ArrayList<>();
+        }
+        Object[] arr = model.stream().filter(m -> m.getKey().equals(key)).toArray();
+        if(arr != null && arr.length > 0){
+            ExceptionCast.cast(CmsCode.CMS_CONFIG_KEY_EXIST);
+        }
+        model.add(configModel);
+        config.setModel(model);
+        config = cmsConfigRepository.save(config);
+        return new CmsConfigResult(CommonCode.SUCCESS,config);
+    }
+
+    public CmsConfigResult editCmsConfigModel(String id, String key, CmsConfigModel configModel) {
+        CmsConfig config = getById(id).getCmsConfig();
+        List<CmsConfigModel> model = config.getModel();
+        if (model != null) {
+            model.stream().forEach(m -> {
+                if(m.getKey().equals(key)){
+                    BeanUtils.copyProperties(configModel,m);
+                }
+            });
+        }
+        config = cmsConfigRepository.save(config);
+        return new CmsConfigResult(CommonCode.SUCCESS,config);
+    }
+
+    public CmsConfigResult delCmsConfigModel(String id, String key) {
+        CmsConfig config = getById(id).getCmsConfig();
+        List<CmsConfigModel> model = config.getModel();
+        if (model != null) {
+            model = model.stream().filter(m -> !m.getKey().equals(key)).collect(Collectors.toList());
+            config.setModel(model);
+        }
+        config = cmsConfigRepository.save(config);
+        return new CmsConfigResult(CommonCode.SUCCESS,config);
     }
 }

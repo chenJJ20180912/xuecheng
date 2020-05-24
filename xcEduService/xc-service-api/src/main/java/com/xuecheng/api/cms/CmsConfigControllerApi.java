@@ -1,6 +1,7 @@
 package com.xuecheng.api.cms;
 
 import com.xuecheng.framework.domain.cms.CmsConfig;
+import com.xuecheng.framework.domain.cms.CmsConfigModel;
 import com.xuecheng.framework.domain.cms.request.QueryConfigRequest;
 import com.xuecheng.framework.domain.cms.response.CmsConfigResult;
 import com.xuecheng.framework.model.response.QueryResponseResult;
@@ -39,4 +40,12 @@ public interface CmsConfigControllerApi {
     //删除数据配置
     @ApiOperation("删除数据配置")
     public ResponseResult delete(String id);
+
+    @ApiOperation("新增数据模型")
+    public CmsConfigResult addCmsConfigModel(String id,CmsConfigModel configModel);
+
+    @ApiOperation("修改数据模型")
+    public CmsConfigResult editCmsConfigModel(String id,String key,CmsConfigModel configModel);
+    @ApiOperation("删除数据模型")
+    public CmsConfigResult delCmsConfigModel(String id,String key);
 }

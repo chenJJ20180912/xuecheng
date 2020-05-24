@@ -59,8 +59,8 @@ module.exports = {
        },
 
        '/api/cms': {//cms管理
-       //target: 'http://127.0.0.1:31001'
-       target: 'http://127.0.0.1:50201',
+       target: 'http://127.0.0.1:31001',
+       //target: 'http://127.0.0.1:50201',
          pathRewrite: {
            '^/api': ''
          }

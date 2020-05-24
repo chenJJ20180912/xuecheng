@@ -8,6 +8,9 @@ import site_edit from '@/module/cms/page/site/site_edit.vue';
 import template_list from '@/module/cms/page/template/template_list.vue';
 import template_add from '@/module/cms/page/template/template_add.vue';
 import template_edit from '@/module/cms/page/template/template_edit.vue';
+import config_list from '@/module/cms/page/config/config_list.vue'
+import dictionary_list from '@/module/cms/page/system/dictionary_list.vue'
+
 export default [{
     path: '/',
     component: Home,
@@ -26,6 +29,9 @@ export default [{
       {path:'/cms/page/add',name:'新增页面',component: page_add,hidden:true},
       {path:'/cms/page/edit/:pageId',name:'修改页面',component: page_edit,hidden:true},
 
+      {path:'/cms/config/list',name:'数据配置',component: config_list,hidden:false},
+
+      {path:'/cms/system/dictionary/list',name:'数据字典',component: dictionary_list,hidden:false},
     ]
   }
 ]

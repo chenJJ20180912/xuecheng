@@ -63,7 +63,6 @@
       },
       //上传成功的钩子方法
       handleSuccess(response, file, fileList){
-        console.log(response)
 //        alert('上传成功')
         //调用课程管理的保存图片接口，将图片信息保存到课程管理数据库course_pic中
         //从response得到新的图片文件的地址

@@ -2,6 +2,7 @@ package com.xuecheng.manage_cms.controller;
 
 import com.xuecheng.api.cms.CmsConfigControllerApi;
 import com.xuecheng.framework.domain.cms.CmsConfig;
+import com.xuecheng.framework.domain.cms.CmsConfigModel;
 import com.xuecheng.framework.domain.cms.request.QueryConfigRequest;
 import com.xuecheng.framework.domain.cms.response.CmsConfigResult;
 import com.xuecheng.framework.model.response.QueryResponseResult;
@@ -52,5 +53,23 @@ public class CmsConfigController implements CmsConfigControllerApi {
     @DeleteMapping("/del/{id}")
     public ResponseResult delete(@PathVariable("id") String id) {
         return cmsConfigService.delete(id);
+    }
+
+    @Override
+    @PostMapping("/{id}/model/add")
+    public CmsConfigResult addCmsConfigModel(@PathVariable("id") String id,@RequestBody CmsConfigModel configModel) {
+        return cmsConfigService.addCmsConfigModel(id,configModel);
+    }
+
+    @Override
+    @PutMapping("/{id}/model/edit/{key}")
+    public CmsConfigResult editCmsConfigModel(@PathVariable("id") String id,@PathVariable("key") String key,@RequestBody  CmsConfigModel configModel) {
+        return cmsConfigService.editCmsConfigModel(id,key,configModel);
+    }
+
+    @Override
+    @DeleteMapping("/{id}/model/del/{key}")
+    public CmsConfigResult delCmsConfigModel(@PathVariable("id") String id,@PathVariable("key")String key) {
+        return cmsConfigService.delCmsConfigModel(id,key);
     }
 }

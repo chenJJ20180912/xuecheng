@@ -1,5 +1,6 @@
 package com.xuecheng.framework.domain.system;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import com.xuecheng.framework.domain.cms.CmsConfigModel;
 import lombok.Data;
 import lombok.ToString;
@@ -29,4 +30,16 @@ public class SysDictionary {
     @Field("d_value")
     private List<SysDictionaryValue> dValue;
 
+    @JsonProperty("dName")
+    public String getDName() {
+        return dName;
+    }
+    @JsonProperty("dType")
+    public String getDType() {
+        return dType;
+    }
+    @JsonProperty("dValue")
+    public List<SysDictionaryValue> getDValue() {
+        return dValue;
+    }
 }

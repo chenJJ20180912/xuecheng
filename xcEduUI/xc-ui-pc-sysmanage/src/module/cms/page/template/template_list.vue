@@ -22,7 +22,7 @@
           </router-link>
         </el-form>
         <el-table
-          :data="list"
+          :data="list" ref="listForm"
           stripe highlight-current-row @current-change="changeRow"
           style="width: 100%">
           <el-table-column type="index" min-width="60">
@@ -105,6 +105,16 @@
           page: 1,
           size: 10
         }
+      }
+    },
+    watch: {
+      // 通过监听实现table加载后自动选中第一行
+      list: function() {
+        this.$nextTick(function() {
+          if(this.list && this.list.length){
+            this.$refs.listForm.setCurrentRow(this.list[0])
+          }
+        })
       }
     },
     methods: {

@@ -75,21 +75,7 @@
       return {
         mediaFormVisible:false,
         teachplayFormVisible:false,//控制添加窗口是否显示
-        teachplanList : [{
-          id: 1,
-          pname: '一级 1',
-          children: [{
-            id: 4,
-            pname: '二级 1-1',
-            children: [{
-              id: 9,
-              pname: '三级 1-1-1'
-            }, {
-              id: 10,
-              pname: '三级 1-1-2'
-            }]
-          }]
-        }],
+        teachplanList : [],
         defaultProps:{
           children: 'children',
           label: 'pname'
@@ -102,7 +88,9 @@
             {required: true, message: '请选择状态', trigger: 'blur'}
           ]
         },
-        teachplanActive:{},
+        teachplanActive:{
+          status:'1',
+        },
         teachplanId:''
       }
     },
@@ -111,7 +99,6 @@
       choosevideo(data){
           //得到当前的课程计划
           this.teachplanId = data.id
-//        alert(this.teachplanId)
           this.mediaFormVisible = true;//打开窗口
       },
       //保存选择的视频
@@ -170,14 +157,22 @@
 
       },
       edit(data){
-        //alert(data.id);
+        this.teachplayFormVisible = true;
+        this.teachplanActive = data;
       },
       remove(node, data) {
-        const parent = node.parent;
-        const children = parent.data.children || parent.data;
-        const index = children.findIndex(d => d.id === data.id);
-        children.splice(index, 1);
-
+        if(!data.children || data.children.length){
+          this.$confirm('您确认删除吗?', '提示', {}).then(() => {
+            courseApi.deleteCoursePlan(data.id).then(res => {
+              const parent = node.parent;
+              const children = parent.data.children || parent.data;
+              const index = children.findIndex(d => d.id === data.id);
+              children.splice(index, 1);
+            });
+          });
+        }else{
+          this.$message.error('当前节点下存在子节点不可直接删除');
+        }
       },
       renderContent(h, { node, data, store }) {
         return (
@@ -199,8 +194,6 @@
             if(res && res.children){
               this.teachplanList = res.children;
             }
-
-
         })
       }
     },
@@ -208,8 +201,7 @@
       //课程id
       this.courseid = this.$route.params.courseid;
       //查询课程计划
-      // this.findTeachplan()
-
+      this.findTeachplan()
     }
   }
 </script>

@@ -30,6 +30,17 @@ public enum CmsCode implements ResultCode {
     CMS_TEMPLATE_FILE_DOWN_FAILD(false,24205,"文件下载失败！"),
     CMS_TEMPLATE_FILE_NOT_EXISTS(false,24206,"模板文件不存在！"),
     CMS_TEMPLATE_FILE_CONVERT_FAIL(false,24206,"模板文件转换异常！"),
+
+
+
+    CMS_CONFIG_KEY_EXIST(false,24301,"参数编号已存在!"),
+
+
+
+    SYS_DICTIONARY_EXIST(false,24901,"业务字典编号已存在"),
+
+
+
     ;
 
     //操作代码
