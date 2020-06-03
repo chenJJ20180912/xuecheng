@@ -7,8 +7,8 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="xc-service-manage-course" />
         <module name="xc-framework-common" />
+        <module name="test-fastdfs" />
         <module name="xc-framework-model" />
         <module name="test-freemaker" />
         <module name="test-rabbitmq-producer" />
@@ -17,11 +17,13 @@
         <module name="xc-service-manage-cms-client" />
         <module name="xc-service-api" />
         <module name="sc-service-manager-cms-client" />
+        <module name="xc-service-manage-course" />
         <module name="xc-service-manage-cms" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="sc-service-manager-cms-client" target="1.8" />
+      <module name="test-fastdfs" target="1.8" />
       <module name="test-freemaker" target="1.8" />
       <module name="test-rabbitmq-consumer" target="1.8" />
       <module name="test-rabbitmq-producer" target="1.8" />
@@ -39,6 +41,7 @@
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="sc-service-manager-cms-client" options="-parameters" />
+      <module name="test-fastdfs" options="-parameters" />
       <module name="test-freemaker" options="-parameters" />
       <module name="test-rabbitmq-consumer" options="-parameters" />
       <module name="test-rabbitmq-producer" options="-parameters" />

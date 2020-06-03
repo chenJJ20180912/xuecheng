@@ -5,7 +5,7 @@
     <title>freemarker测试</title>
 </head>
 <body>
-hello ${name}!<br/>
+hello ${name!'World'}!<br/>
 <br/>
 测试获取对象内的数据<br/>
 姓名:${stu1.name}<br/>

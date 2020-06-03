@@ -63,14 +63,20 @@ export const savemedia = teachplanMedia => {
   return http.requestPost(apiUrl+'/course/savemedia',teachplanMedia);
 };
 
+// 根据id获取课程运营
 export  const getCourseMarketById = (id) =>{
   return http.requestGet(apiUrl+'/course/coursemarket/get/'+id);
 };
-
+// 删除课程计划
 export  const deleteCoursePlan =(id) =>{
 return http.requestDelete(apiUrl+'/course/teachplan/del/'+id);
 };
-
+// 更新课程运营
 export const updateCourseMarket = (id,params) =>{
   return http.requestPut(apiUrl+'/course/coursemarket/update/'+id,params);
-}
+};
+
+// 根据id查找课程计划
+export const findTeachplanById = (id) =>{
+  return http.requestGet(apiUrl+'/course/teachplan/get/'+id);
+};

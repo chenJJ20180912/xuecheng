@@ -2,6 +2,7 @@ package com.xuecheng.api.course;
 
 import com.xuecheng.framework.domain.course.Teachplan;
 import com.xuecheng.framework.domain.course.ext.TeachplanNode;
+import com.xuecheng.framework.domain.course.response.TeachplanResult;
 import com.xuecheng.framework.model.response.ResponseResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
@@ -18,5 +19,6 @@ public interface TeachplanControllerApi{
 
     @ApiOperation("删除课程计划")
     ResponseResult del(String tearchplanId);
-
+    @ApiOperation("查询课程计划 ")
+    TeachplanResult findById(String tearchplanId);
 }

@@ -3,6 +3,7 @@ package com.xuecheng.manage_course.controller;
 import com.xuecheng.api.course.TeachplanControllerApi;
 import com.xuecheng.framework.domain.course.Teachplan;
 import com.xuecheng.framework.domain.course.ext.TeachplanNode;
+import com.xuecheng.framework.domain.course.response.TeachplanResult;
 import com.xuecheng.framework.model.response.ResponseResult;
 import com.xuecheng.manage_course.service.TeachplanServie;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -33,5 +34,11 @@ public class TeachplanController implements TeachplanControllerApi {
     @DeleteMapping("/del/{id}")
     public ResponseResult del(@PathVariable("id") String tearchplanId) {
         return teachplanServie.del(tearchplanId);
+    }
+
+    @Override
+    @GetMapping("/get/{id}")
+    public TeachplanResult findById(@PathVariable("id")String tearchplanId) {
+        return teachplanServie.findById(tearchplanId);
     }
 }

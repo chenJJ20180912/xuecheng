@@ -4,6 +4,7 @@ import com.xuecheng.framework.domain.course.CourseBase;
 import com.xuecheng.framework.domain.course.Teachplan;
 import com.xuecheng.framework.domain.course.ext.TeachplanNode;
 import com.xuecheng.framework.domain.course.response.CourseCode;
+import com.xuecheng.framework.domain.course.response.TeachplanResult;
 import com.xuecheng.framework.exception.ExceptionCast;
 import com.xuecheng.framework.model.response.CommonCode;
 import com.xuecheng.framework.model.response.ResponseResult;
@@ -120,5 +121,13 @@ public class TeachplanServie {
         }
         teachplanRepository.delete(teachplan);
         return new ResponseResult(CommonCode.SUCCESS);
+    }
+
+    public TeachplanResult findById(String tearchplanId) {
+        Optional<Teachplan> optional = teachplanRepository.findById(tearchplanId);
+        if(!optional.isPresent()){
+            ExceptionCast.cast(CommonCode.INVALID_PARAM);
+        }
+        return new TeachplanResult(optional.get());
     }
 }
