@@ -7,18 +7,19 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="xc-framework-common" />
-        <module name="test-fastdfs" />
-        <module name="xc-framework-model" />
-        <module name="test-freemaker" />
-        <module name="test-rabbitmq-producer" />
-        <module name="xc-framework-utils" />
-        <module name="test-rabbitmq-consumer" />
-        <module name="xc-service-manage-cms-client" />
-        <module name="xc-service-api" />
-        <module name="sc-service-manager-cms-client" />
         <module name="xc-service-manage-course" />
-        <module name="xc-service-manage-cms" />
+        <module name="xc-framework-model" />
+        <module name="xc-framework-utils" />
+        <module name="xc-service-api" />
+        <module name="test-rabbitmq-consumer" />
+        <module name="xc-service-base-filesystem" />
+        <module name="test-rabbitmq-producer" />
+        <module name="xc-framework-common" />
+        <module name="test-freemaker" />
+        <module name="xc-govern-center" />
+        <module name="test-fastdfs" />
+        <module name="xc-service-manage-cms-client" />
+        <module name="sc-service-manager-cms-client" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
@@ -32,7 +33,9 @@
       <module name="xc-framework-model" target="1.8" />
       <module name="xc-framework-parent" target="1.8" />
       <module name="xc-framework-utils" target="1.8" />
+      <module name="xc-govern-center" target="1.8" />
       <module name="xc-service-api" target="1.8" />
+      <module name="xc-service-base-filesystem" target="1.8" />
       <module name="xc-service-manage-cms" target="1.8" />
       <module name="xc-service-manage-cms-client" target="1.8" />
       <module name="xc-service-manage-course" target="1.8" />
@@ -49,7 +52,9 @@
       <module name="xc-framework-common" options="-parameters" />
       <module name="xc-framework-model" options="-parameters" />
       <module name="xc-framework-utils" options="-parameters" />
+      <module name="xc-govern-center" options="-parameters" />
       <module name="xc-service-api" options="-parameters" />
+      <module name="xc-service-base-filesystem" options="-parameters" />
       <module name="xc-service-manage-cms" options="-parameters" />
       <module name="xc-service-manage-cms-client" options="-parameters" />
       <module name="xc-service-manage-course" options="-parameters" />
