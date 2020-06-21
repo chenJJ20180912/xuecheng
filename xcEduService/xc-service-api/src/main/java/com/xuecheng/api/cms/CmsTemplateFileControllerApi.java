@@ -1,12 +1,10 @@
 package com.xuecheng.api.cms;
 
-import com.xuecheng.framework.model.response.QueryResult;
+import com.xuecheng.framework.domain.cms.CmsPage;
+import com.xuecheng.framework.domain.cms.response.CmsPublishResult;
 import com.xuecheng.framework.model.response.ResponseResult;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.multipart.MultipartFile;
 
 @Api(value="cms模板文件管理接口",description = "cms模板管理接口，提供模板的增、删、改、查")
@@ -19,9 +17,11 @@ public interface CmsTemplateFileControllerApi {
     void downTemplate(String templateId,String fileName);
 
 
-    @GetMapping("/preview/{id}")
+    @ApiOperation("页面预览")
     void previewPage(String pageId);
 
-    @PostMapping("/postPage/{id}")
-    ResponseResult postPage(@PathVariable("id") String pageId);
+    @ApiOperation("页面发布")
+    ResponseResult postPage( String pageId);
+    @ApiOperation("一键发布页面")
+    CmsPublishResult publishPage(CmsPage cmsPage);
 }

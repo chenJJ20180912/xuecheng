@@ -19,11 +19,11 @@ public class TestRibbon {
 
     @Test
     public void testRibbon(){
-        String url = "http://XC-SERVICE-MANAGE-CMS/cms/page/list/1/10";
-        for(int i=0;i<10;i++) {
-            ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
-            Map body = response.getBody();
-            System.out.println(body);
-        }
+//        String url = "http://XC-SERVICE-MANAGE-CMS/cms/page/list/1/10";
+//        for(int i=0;i<10;i++) {
+//            ResponseEntity<Map> response = restTemplate.getForEntity(url, Map.class);
+//            Map body = response.getBody();
+//            System.out.println(body);
+//        }
     }
 }

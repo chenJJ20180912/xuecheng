@@ -10,9 +10,9 @@
       <el-form-item label="站点端口" prop="sitePort">
         <el-input v-model="pageForm.sitePort" auto-complete="off"></el-input>
       </el-form-item>
-      <el-table-column prop="sitePhysicalPath" label="物理路径">
+      <el-form-item prop="sitePhysicalPath" label="物理路径">
         <el-input v-model="pageForm.sitePhysicalPath" auto-complete="off"></el-input>
-      </el-table-column>
+      </el-form-item>
       <el-form-item label="访问路径" prop="siteWebPath">
         <el-input v-model="pageForm.siteWebPath" auto-complete="off"></el-input>
       </el-form-item>

@@ -1,7 +1,9 @@
 package com.xuecheng.manage_cms.controller;
 
 import com.xuecheng.api.cms.CmsTemplateFileControllerApi;
+import com.xuecheng.framework.domain.cms.CmsPage;
 import com.xuecheng.framework.domain.cms.response.CmsCode;
+import com.xuecheng.framework.domain.cms.response.CmsPublishResult;
 import com.xuecheng.framework.exception.ExceptionCast;
 import com.xuecheng.framework.model.response.ResponseResult;
 import com.xuecheng.framework.web.BaseController;
@@ -52,6 +54,7 @@ public class CmsTemplateFileController extends BaseController implements CmsTemp
         String templateFileContent = cmsTemplateService.previewPage(pageId);
         if (StringUtils.isNotEmpty(templateFileContent)) {
             try {
+                response.setContentType("text/html;charset=utf‐8");
                 IOUtils.write(templateFileContent, response.getOutputStream(), "utf-8");
                 response.getOutputStream().flush();
             } catch (IOException e) {
@@ -65,5 +68,12 @@ public class CmsTemplateFileController extends BaseController implements CmsTemp
     @ResponseBody
     public ResponseResult postPage(@PathVariable("id") String pageId){
         return cmsTemplateService.postPage(pageId);
+    }
+
+    @Override
+    @PostMapping("/publishPage")
+    @ResponseBody
+    public CmsPublishResult publishPage(@RequestBody CmsPage cmsPage) {
+        return cmsTemplateService.publishPage(cmsPage);
     }
 }

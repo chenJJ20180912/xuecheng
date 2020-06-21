@@ -1,0 +1,7 @@
+C:\workspace\xuecheng\xcEduService\xc-service-manage-cms-client\src\main\java\com\xuecheng\manager_cms_client\ManageCmsClientApplication.java
+C:\workspace\xuecheng\xcEduService\xc-service-manage-cms-client\src\main\java\com\xuecheng\manager_cms_client\dao\CmsPageRepository.java
+C:\workspace\xuecheng\xcEduService\xc-service-manage-cms-client\src\main\java\com\xuecheng\manager_cms_client\mq\CmsPostPage.java
+C:\workspace\xuecheng\xcEduService\xc-service-manage-cms-client\src\main\java\com\xuecheng\manager_cms_client\config\RabbitmqConfig.java
+C:\workspace\xuecheng\xcEduService\xc-service-manage-cms-client\src\main\java\com\xuecheng\manager_cms_client\dao\CmsSiteRepository.java
+C:\workspace\xuecheng\xcEduService\xc-service-manage-cms-client\src\main\java\com\xuecheng\manager_cms_client\service\CmsPageService.java
+C:\workspace\xuecheng\xcEduService\xc-service-manage-cms-client\src\main\java\com\xuecheng\manager_cms_client\config\MongoConfig.java

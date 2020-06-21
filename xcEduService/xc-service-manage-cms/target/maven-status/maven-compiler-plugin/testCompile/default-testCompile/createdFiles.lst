@@ -1,0 +1,4 @@
+com\xuecheng\manage_cms\service\CmsTemplateServiceTest.class
+com\xuecheng\manage_cms\ribbon\TestRibbon.class
+com\xuecheng\manage_cms\service\SysServiceTest.class
+com\xuecheng\manage_cms\dao\CmsPageRepositoryTest.class

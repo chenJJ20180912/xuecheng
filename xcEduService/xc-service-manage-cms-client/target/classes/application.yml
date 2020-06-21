@@ -21,6 +21,6 @@ spring:
 xuecheng:
   mq:
     #路由键
-    routingKey: 5a751fab6abb5044e0d19ea1
+    routingKey: 5eed803031b37f0a88e57df7
     #接收队列名称
-    receiveQueue: CMS_PAGE_POST_01
+    receiveQueue: CMS_PAGE_POST_02

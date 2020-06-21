@@ -75,10 +75,11 @@
 
         <dependency>
             <groupId>org.springframework.cloud</groupId>
-            <artifactId>spring‐cloud‐starter‐openfeign</artifactId> </dependency>
+            <artifactId>spring-cloud-starter-openfeign</artifactId>
+        </dependency>
         <dependency>
             <groupId>com.netflix.feign</groupId>
-            <artifactId>feign‐okhttp</artifactId>
+            <artifactId>feign-okhttp</artifactId>
         </dependency>
     </dependencies>
 

@@ -1,0 +1,7 @@
+com\xuecheng\manager_cms_client\dao\CmsSiteRepository.class
+com\xuecheng\manager_cms_client\config\MongoConfig.class
+com\xuecheng\manager_cms_client\dao\CmsPageRepository.class
+com\xuecheng\manager_cms_client\ManageCmsClientApplication.class
+com\xuecheng\manager_cms_client\config\RabbitmqConfig.class
+com\xuecheng\manager_cms_client\mq\CmsPostPage.class
+com\xuecheng\manager_cms_client\service\CmsPageService.class

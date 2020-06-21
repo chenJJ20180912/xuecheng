@@ -6,7 +6,9 @@ ADD target/xc-govern-center.jar /xc-govern-center.jar
 RUN bash -c 'touch /xc-govern-center.jar'
 # 声明服务运行在8080端口
 EXPOSE 50101
+#定义jvm参数变量
+ENV JAVA_OPTIONS=""
 # 指定docker容器启动时运行jar包
-ENTRYPOINT ["java", "-jar","/xc-govern-center.jar"]
+ENTRYPOINT java ${JAVA_OPTIONS} -jar /xc-govern-center.jar
 # 指定维护者的名字
 MAINTAINER chenjia

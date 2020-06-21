@@ -5,10 +5,10 @@ import com.mongodb.client.gridfs.GridFSBucket;
 import com.mongodb.client.gridfs.GridFSDownloadStream;
 import com.mongodb.client.gridfs.model.GridFSFile;
 import com.xuecheng.framework.domain.cms.CmsPage;
+import com.xuecheng.framework.domain.cms.CmsSite;
 import com.xuecheng.framework.domain.cms.CmsTemplate;
 import com.xuecheng.framework.domain.cms.request.QueryTemplateRequest;
-import com.xuecheng.framework.domain.cms.response.CmsCode;
-import com.xuecheng.framework.domain.cms.response.CmsTemplateResult;
+import com.xuecheng.framework.domain.cms.response.*;
 import com.xuecheng.framework.exception.ExceptionCast;
 import com.xuecheng.framework.model.response.CommonCode;
 import com.xuecheng.framework.model.response.QueryResponseResult;
@@ -67,6 +67,9 @@ public class CmsTemplateService {
 
     @Autowired
     private RestTemplate restTemplate;
+
+    @Autowired
+    private CmsSiteService cmsSiteService;
 
     @Autowired
     private CmsPageRepository cmsPageRepository;
@@ -297,5 +300,22 @@ public class CmsTemplateService {
         rabbitTemplate.convertAndSend(RabbitmqConfig.EXCHANGE_CMS_PAGE_POST, cmsPage.getSiteId(),
                 JSON.toJSONString(map));
         return new ResponseResult(CommonCode.SUCCESS);
+    }
+
+    public CmsPublishResult publishPage(CmsPage cmsPage) {
+        CmsPageResult save = cmsPageService.save(cmsPage);
+        if(!save.isSuccess()){
+            ExceptionCast.cast(CommonCode.FAIL);
+        }
+        CmsPage saveCmsPage = save.getCmsPage();
+        ResponseResult postPage = postPage(saveCmsPage.getPageId());
+        if(!postPage.isSuccess()){
+            ExceptionCast.cast(CommonCode.FAIL);
+        }
+        String siteId = saveCmsPage.getSiteId();
+        CmsSiteResult site = cmsSiteService.getById(siteId);
+        CmsSite cmsSite = site.getCmsSite();
+        String pageUrl = cmsSite.getSiteDomain() + cmsSite.getSiteWebPath() + cmsPage.getPageWebPath() + cmsPage.getPageName();
+        return new CmsPublishResult(CommonCode.SUCCESS,pageUrl);
     }
 }

@@ -22,7 +22,6 @@
     <option name="ignoredFiles">
       <set>
         <option value="$PROJECT_DIR$/sc-service-manager-cms-client/pom.xml" />
-        <option value="$PROJECT_DIR$/xc-service-manage-cms/pom.xml" />
       </set>
     </option>
   </component>

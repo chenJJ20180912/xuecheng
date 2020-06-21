@@ -167,4 +167,13 @@ public class CmsPageService {
         }
         return result;
     }
+
+    // 创建或更新
+    public CmsPageResult save(CmsPage cmsPage) {
+        CmsPage one = cmsPageRepository.findByPageNameAndSiteIdAndPageWebPath(cmsPage.getPageName(), cmsPage.getSiteId(), cmsPage.getPageWebPath());
+        if(one != null){
+            return this.update(one.getPageId(),cmsPage);
+        }
+        return this.add(cmsPage);
+    }
 }
